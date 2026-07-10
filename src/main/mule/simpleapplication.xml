@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" 
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/secure-properties http://www.mulesoft.org/schema/mule/secure-properties/current/mule-secure-properties.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="3f531111-8858-4017-87ed-7058fc69a859" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>	
+	<flow name="github-actionsFlow" doc:id="5ee27deb-2d5d-4cd3-8226-9d1de025fb9f" >
+		<http:listener doc:name="Listener" doc:id="0c981095-8ca1-4b51-ac2a-eb157d8b9338" config-ref="HTTP_Listener_config" path="/test"/>
+		<set-payload value='#["It worked! Secured property: "]' doc:name="Set Payload" doc:id="8932cfa0-f142-4c36-aadb-aae2d8b6bc60" />
+		<logger level="INFO" doc:name="Logger" doc:id="7bcbb37a-0cd2-4cc9-9fc5-7ee3d26e09a1" message='#[payload]' />
+	</flow>
+	<sub-flow name="github-actions:test-subflow" doc:id="fbba4871-e1ac-40ef-8cfe-dd6c2cd0a0b3" >
+		<ee:transform doc:name="Transform Message" doc:id="3054f4df-b80e-49e9-b69a-d1c3ffd747e7" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+if (payload != -1) {
+	"payload": payload
+} else "Received a -1"]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</sub-flow>
+</mule>
