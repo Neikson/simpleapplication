@@ -27,22 +27,25 @@
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
-				<version>${mule.maven.plugin.version}</version>
-				<extensions>true</extensions>
+				<version>4.12.0</version> <extensions>true</extensions>
 				<configuration>
-					<cloudHubDeployment>
+					<cloudhub2Deployment>
 						<uri>https://anypoint.mulesoft.com</uri>
-						<muleVersion>${app.runtime}</muleVersion>
-						<username>${anypoint.username}</username>
-						<password>${anypoint.password}</password>
-						<applicationName>${app.name}</applicationName>
-						<environment>Sandbox</environment>
-						<workerType>MICRO</workerType>
-						<region>us-east-2</region>
-						<workers>1</workers>
-						<objectStoreV2>true</objectStoreV2>						
-					</cloudHubDeployment>
-					<classifier>mule-application</classifier>
+						<provider>MC</provider>
+						<businessGroup>Your Main Organization or Business Group</businessGroup>
+						<environment>${environment}</environment>
+						<target>${target.space}</target> <muleVersion>4.12.0</muleVersion>
+						<connectedAppClientId>${anypoint.client_id}</connectedAppClientId>
+						<connectedAppClientSecret>${anypoint.client_secret}</connectedAppClientSecret>
+						<connectedAppGrantType>client_credentials</connectedAppGrantType>
+						<applicationName>${project.artifactId}-${environment}</applicationName>
+						<replicas>1</replicas>
+						<vCores>0.1</vCores>
+						<properties>
+							<env>Sandbox</env>
+							<anypoint.platform.config.proxy.mode>custom</anypoint.platform.config.proxy.mode>
+						</properties>
+					</cloudhub2Deployment>
 				</configuration>
 			</plugin>
 		</plugins>
