@@ -4,7 +4,7 @@
 
 	<groupId>77486165-736b-40da-bdaa-9c1d4f1ddd12</groupId>
 	<artifactId>simpleapplication</artifactId>
-	<version>1.0.0-${build.number}</version>
+	<version>1.0.2</version>
 	<packaging>mule-application</packaging>
 
 	<name>simpleapplication</name>
