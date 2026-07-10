@@ -41,10 +41,9 @@
 						<region>us-east-2</region>
 						<workers>1</workers>
 						<objectStoreV2>true</objectStoreV2>
-						<!-- Start: SECURED PROPERTIES CI/CD -->
-						<properties>							
-						</properties>
-						<!-- End: SECURED PROPERTIES CI/CD -->
+						<properties>
+               		 		<env>${environment}</env>
+           				</properties>
 					</cloudHubDeployment>
 					<classifier>mule-application</classifier>
 				</configuration>
