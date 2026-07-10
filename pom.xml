@@ -42,8 +42,7 @@
 						<workers>1</workers>
 						<objectStoreV2>true</objectStoreV2>
 						<!-- Start: SECURED PROPERTIES CI/CD -->
-						<properties>
-							<secure.key>${decryption.key}</secure.key>
+						<properties>							
 						</properties>
 						<!-- End: SECURED PROPERTIES CI/CD -->
 					</cloudHubDeployment>
