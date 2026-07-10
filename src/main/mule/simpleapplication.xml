@@ -11,7 +11,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	</http:listener-config>	
 	<flow name="github-actionsFlow" doc:id="5ee27deb-2d5d-4cd3-8226-9d1de025fb9f" >
 		<http:listener doc:name="Listener" doc:id="0c981095-8ca1-4b51-ac2a-eb157d8b9338" config-ref="HTTP_Listener_config" path="/test"/>
-		<set-payload value='#["It worked! Secured property: "]' doc:name="Set Payload" doc:id="8932cfa0-f142-4c36-aadb-aae2d8b6bc60" />
+		<set-payload value='#["It worked!"]' doc:name="Set Payload" doc:id="8932cfa0-f142-4c36-aadb-aae2d8b6bc60" />
 		<logger level="INFO" doc:name="Logger" doc:id="7bcbb37a-0cd2-4cc9-9fc5-7ee3d26e09a1" message='#[payload]' />
 	</flow>
 	<sub-flow name="github-actions:test-subflow" doc:id="fbba4871-e1ac-40ef-8cfe-dd6c2cd0a0b3" >
